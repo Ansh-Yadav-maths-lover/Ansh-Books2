@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Courses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            overflow-x: hidden;
+            /* Disable horizontal scrolling */
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: url('https://www.suntiros.com/wp-content/uploads/2016/12/Shah-Rukh-Khan.jpg') center/cover no-repeat fixed;
+            color: #fff;
+            text-align: center;
+            padding: 3em;
+            transition: height 0.5s ease-out;
+            /* Added transition for smooth height change */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+
+        header .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1em;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Center the content horizontally */
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            /* Added transition for smooth opacity change */
+        }
+
+        .logo {
+            width: 40px;
+            /* Adjust the width of the logo as needed */
+            margin-right: 10px;
+            /* Add some space between the logo and text */
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            margin-top: 0;
+            /* Updated margin-top to 0 */
+            background-color: #fff;
+            /* Background color for the content section */
+            transition: margin-top 0.5s ease-out;
+            /* Added transition for smooth margin-top change */
+        }
+
+        .course {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
+            cursor: pointer;
+        }
+
+        .course:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .course img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .course-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1em;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .course:hover .course-info {
+            opacity: 1;
+        }
+
+        .course h3 {
+            margin: 0;
+        }
+
+        .widgets-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #f0f0f0;
+            z-index: 3;
+            /* Ensure widgets appear above other content */
+        }
+
+        .widget {
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .widget img {
+            width: 50px;
+            /* Adjust the width of the widget images */
+            height: 50px;
+            /* Adjust the height of the widget images */
+        }
+
+        /* Typewriter animation */
+        header h2 span {
+            border-right: 2px solid #fff;
+            padding-right: 5px;
+            animation: typewriter 1s steps(20) infinite;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-header">
+        <img class="logo" src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/ansh_orig.png" alt="Ansh Logo">
+        <h2>Ansh Books</h2>
+    </div>
+
+    <header> 
+        <h2>By <span id="authorName"></span></h2>
+        <h2>(Just Scroll)</h2>
+        <div class="overlay"></div>
+    </header>
+
+    <section>
+        <div class="course" data-url="https://anshbooks.weebly.com" onclick="redirectTo(this)">
+            <img src="https://anshbooks.weebly.com/uploads/1/4/7/8/147853174/337215214_orig.png" alt="Course 1">
+            <div class="course-info">
+                <h3>Course 1</h3>
+                <!-- Additional course information can be added here -->
+            </div>
+        </div>
+
+        <div class="course" data-url="https://anshbooks.weebly.com" onclick="redirectTo(this)">
+            <img src="https://anshbooks.weebly.com/uploads/1/4/7/8/147853174/337215214_orig.png" alt="Course 2">
+            <div class="course-info">
+                <h3>Course 2</h3>
+                <!-- Additional course information can be added here -->
+            </div>
+        </div>
+
+        <div class="course" data-url="https://anshbooks.weebly.com" onclick="redirectTo(this)">
+            <img src="https://anshbooks.weebly.com/uploads/1/4/7/8/147853174/337215214_orig.png" alt="Course 3">
+            <div class="course-info">
+                <h3>Course 3</h3>
+                <!-- Additional course information can be added here -->
+            </div>
+        </div>
+
+        <!-- Add more courses as needed -->
+    </section>
+
+    <!-- Widgets Section -->
+    <div class="widgets-section">
+        <div class="widget" data-url="https://supportmailcos.000webhostapp.com/chos.html" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/a_orig.png" alt="Batches">
+        </div>
+        <div class="widget" data-url="https://example.com/widget2" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/b_orig.png" alt="Practice">
+        </div>
+        <div class="widget" data-url="https://example.com/widget3" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/d_orig.png" alt="Home">
+        </div>
+        <div class="widget" data-url="https://example.com/widget4" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/c_orig.png" alt="Study Stuff">
+        </div>
+        <div class="widget" data-url="https://example.com/widget5" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/e_orig.png" alt="Contact Us">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var widgetsSection = document.querySelector('.widgets-section');
+            var scrollPos = window.scrollY;
+            var header = document.querySelector('header');
+            var section = document.querySelector('section');
+            var fixedHeader = document.querySelector('.fixed-header');
+            var clickableElements = document.querySelectorAll('.course, .widget');
+            var authorName = document.getElementById('authorName');
+            var authorText = "Ansh Books";
+            var index = 0;
+            var hasScrolled = false; // Flag to track if the automatic scroll has occurred
+
+            // Initially hide the widgets
+            widgetsSection.style.bottom = '-70px';
+
+            // Add scroll event listener with debouncing
+            var scrollTimeout;
+            document.addEventListener('scroll', function () {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(function () {
+                    scrollPos = window.scrollY;
+
+                    // Show/hide widgets based on scroll position
+                    widgetsSection.style.bottom = scrollPos > 300 ? '0' : '-70px';
+
+                    // Parallax effect for header background image
+                    header.style.backgroundPositionY = -scrollPos * 0.1 + 'px'; // Adjust the factor for parallax
+                    header.style.opacity = 1 - scrollPos / (header.offsetHeight / 2);
+
+                    // Adjust the background image size on scroll for a smoother effect
+                    var scale = 1 + scrollPos / 1000;
+                    header.style.backgroundSize = `calc(100% + ${scrollPos * 0.5}px)`;
+
+                    section.style.marginTop = -scrollPos / 2 + 'px';
+
+                    // Show/hide fixed header based on scroll position
+                    fixedHeader.style.opacity = scrollPos > header.offsetHeight / 2 ? '1' : '0';
+
+                    // Check course visibility
+                    checkVisibility();
+                }, 100); // Adjust the debounce time as needed
+            });
+
+            // Initial check on page load
+            checkVisibility();
+
+            // Add click event listener to each clickable element
+            clickableElements.forEach(function (clickableElement) {
+                clickableElement.addEventListener('click', function () {
+                    // Get the URL from the "data-url" attribute
+                    var url = clickableElement.getAttribute('data-url');
+
+                    // Redirect to the URL
+                    window.location.href = url;
+                });
+            });
+
+            // Typewriter effect
+            function typeWriter() {
+                if (index < authorText.length) {
+                    authorName.innerHTML += authorText.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 150); // Adjust the typing speed here
+                } else if (!hasScrolled) {
+                    // Typewriter effect completed, trigger automatic scroll (once)
+                    setTimeout(function () {
+                        window.scrollTo({
+                            top: section.offsetTop, // Adjust this value as needed
+                            behavior: 'smooth'
+                        });
+                        hasScrolled = true; // Update the flag
+                    }, 1000); // Adjust the delay for the automatic scroll
+                }
+            }
+
+            // Trigger the typewriter effect after a short delay
+            setTimeout(typeWriter, 500); // Delay set to 500 milliseconds
+
+            // Touch events for smooth scrolling of the second part
+            var startY, currentY, dist, isScrolling;
+
+            section.addEventListener('touchstart', function (e) {
+                startY = e.touches[0].clientY;
+                isScrolling = undefined;
+            });
+
+            section.addEventListener('touchmove', function (e) {
+                if (startY === undefined) return;
+
+                currentY = e.touches[0].clientY;
+                dist = currentY - startY;
+
+                if (Math.abs(dist) < 5) {
+                    isScrolling = false;
+                    return;
+                }
+
+                isScrolling = true;
+
+                if (dist > 0 && scrollPos > 0) {
+                    // Scrolling up
+                    window.scrollBy(0, -dist);
+                } else if (dist < 0 && scrollPos < section.scrollHeight - window.innerHeight) {
+                    // Scrolling down
+                    window.scrollBy(0, -dist);
+                }
+            });
+
+            section.addEventListener('touchend', function () {
+                if (isScrolling === undefined) return;
+
+                // If the user released the touch, scroll to the nearest position
+                var remainder = scrollPos % window.innerHeight;
+
+                if (remainder > window.innerHeight / 2) {
+                    window.scrollTo({
+                        top: scrollPos + window.innerHeight - remainder,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    window.scrollTo({
+                        top: scrollPos - remainder,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Function to check course visibility
+        function checkVisibility() {
+            var courses = document.querySelectorAll('.course');
+            courses.forEach(function (course) {
+                var rect = course.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    course.classList.add('animated');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
