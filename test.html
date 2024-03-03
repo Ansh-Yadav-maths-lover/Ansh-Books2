@@ -1,97 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Basic Webpage with Redirecting Buttons (Revised)</title>
-  <style>
-    /* Style definitions for the webpage elements */
-    body {
-      font-family: sans-serif; /* Change to default sans-serif font */
-      margin: 0;
-      padding: 20px;
-      background-image: url('https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/screenshot-2024-03-02-070627_orig.png');
-      background-size: cover; /* Adjust to cover the entire viewport */
-      background-position: center; /* Center the background image */
-      background-repeat: no-repeat;
-      background-attachment: fixed; /* Parallax effect */
-      color: white; /* Set text color to contrast with the background */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Webpage with Redirecting Buttons (Revised)</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/screenshot-2024-03-02-070627_orig.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: stretch;
-      gap: 30px;
-    }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: stretch;
+            gap: 30px;
+        }
 
-    .chapter {
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for readability */
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 300px;
-      cursor: pointer;
-      transition: box-shadow 0.3s, transform 0.3s; /* Added transition properties */
-    }
+        .chapter {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            cursor: pointer;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
 
-    .chapter:hover {
-      background-color: rgba(255, 255, 255, 1); /* Solid white background on hover */
-    }
+        .chapter:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
 
-    .chapter:active {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transform: scale(0.95); /* Added scale transformation on click */
-    }
+        .chapter:active {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(0.95);
+        }
 
-    .chapter h2 {
-      font-size: 24px;
-      margin: 0;
-      color: black; /* Set text color for chapter names */
-    }
+        .chapter h2 {
+            font-size: 24px;
+            margin: 0;
+            color: black;
+        }
 
-    .horizontal-line {
-      border-top: 1px solid #ddd;
-      width: 100%;
-      margin: 20px 0;
-    }
+        .horizontal-line {
+            border-top: 1px solid #ddd;
+            width: 100%;
+            margin: 20px 0;
+        }
 
-    .pop-button {
-      background-color: transparent;
-      border: none;
-      border-radius: 50%;
-      padding: 8px;
-    }
+        .pop-button {
+            background-color: transparent;
+            border: none;
+            border-radius: 50%;
+            padding: 8px;
+        }
 
-    .pop-button img {
-      width: 40px;
-      height: 40px;
-    }
+        .pop-button img {
+            width: 40px;
+            height: 40px;
+        }
 
-    /* Styles for the widgets section */
-    .widgets-section {
-      position: fixed;
-      bottom: -60px; /* Initially hide the widgets */
-      right: 20px;
-      display: flex;
-      gap: 10px;
-      transition: bottom 0.3s ease-out; /* Added transition for smooth animation */
-    }
+        .widgets-section {
+            position: fixed;
+            bottom: -60px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            transition: bottom 0.3s ease-out;
+            z-index: 1;
+        }
 
-    .widget {
-      cursor: pointer;
-    }
-  </style>
+        .widget {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .widget:hover {
+            background-color: white;
+        }
+    </style>
 </head>
+
 <body>
   <div class="container">
-    <!-- Your existing chapters go here -->
-    
-      <div class="container">
     <a href="https://api.devjisu.com/?v=https://d1d34p8vz63oiq.cloudfront.net/61428f7d-ce2f-4c4d-9077-5757cad10f75/master.mpd" class="chapter">
       <h2>The Fundamental Unit of Life</h2>
       <button class="pop-button">
@@ -143,38 +149,36 @@
       </button>
     </a>
   </div>
-    
-  </div>
 
-  <!-- Widgets Section -->
-  <div class="widgets-section">
-    <div class="widget" data-url="https://example.com/widget1" onclick="redirectTo(this)">
-      <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/a_orig.png" alt="Batches">
+    <!-- Widgets Section -->
+    <div class="widgets-section">
+        <div class="widget" data-url="https://example.com/widget1" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/a_orig.png" alt="Batches">
+        </div>
+        <div class="widget" data-url="https://example.com/widget2" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/b_orig.png" alt="Practice">
+        </div>
+        <div class="widget" data-url="https://ansh-yadav-maths-lover.github.io/Ansh-Books/" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/d_orig.png" alt="Home">
+        </div>
+        <div class="widget" data-url="https://example.com/widget4" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/c_orig.png" alt="Study Stuff">
+        </div>
+        <div class="widget" data-url="https://example.com/widget5" onclick="redirectTo(this)">
+            <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/e_orig.png" alt="Contact Us">
+        </div>
     </div>
-    <div class="widget" data-url="https://example.com/widget2" onclick="redirectTo(this)">
-      <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/b_orig.png" alt="Practice">
-    </div>
-    <div class="widget" data-url="https://ansh-yadav-maths-lover.github.io/Ansh-Books/" onclick="redirectTo(this)">
-      <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/d_orig.png" alt="Home">
-    </div>
-    <div class="widget" data-url="https://example.com/widget4" onclick="redirectTo(this)">
-      <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/c_orig.png" alt="Study Stuff">
-    </div>
-    <div class="widget" data-url="https://example.com/widget5" onclick="redirectTo(this)">
-      <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/e_orig.png" alt="Contact Us">
-    </div>
-  </div>
 
-  <script>
-    document.body.addEventListener('click', function() {
-      // Add any global click event animations here
-    });
+    <script>
+        document.body.addEventListener('click', function () {
+            // Add any global click event animations here
+        });
 
-    // Add scroll event listener to show/hide widgets based on scroll position
-    document.addEventListener('scroll', function() {
-      var widgetsSection = document.querySelector('.widgets-section');
-      widgetsSection.style.bottom = window.scrollY > 300 ? '20px' : '-60px';
-    });
-  </script>
+        document.addEventListener('scroll', function () {
+            var widgetsSection = document.querySelector('.widgets-section');
+            widgetsSection.style.bottom = window.scrollY > 300 ? '20px' : '-60px';
+        });
+    </script>
 </body>
+
 </html>
