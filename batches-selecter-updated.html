@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansh Books</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            display: inline-block;
+            margin: 0;
+            color: #333;
+        }
+
+        .course-filters {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+
+        .course-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .course-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .course-card h2 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 15px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        select:hover {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .no-courses-found {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .no-courses-found img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        /* Animation styles */
+        .click-animation {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ff0000; /* Initial color, you can set it to any color */
+            animation: clickAnimation 0.5s ease-out;
+            pointer-events: none; /* Avoids interference with actual clicks */
+        }
+
+        @keyframes clickAnimation {
+            to {
+                transform: scale(5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://ansh-here.weebly.com/uploads/1/4/8/9/148906323/ansh_orig.png" alt="Ansh Books Logo">
+        <h1>Ansh Books</h1>
+    </header>
+
+    <div class="course-filters">
+        <label for="category">Filter by Category:</label>
+        <select id="category">
+            <option value="all">All</option>
+            <option value="technology">Technology</option>
+            <option value="education">Education</option>
+            <option value="business">Business</option>
+            <!-- Add more categories as needed -->
+        </select>
+    </div>
+
+    <section class="course-list">
+        <!-- Courses will be dynamically added here -->
+    </section>
+
+    <div class="no-courses-found" style="display: none;">
+        <p>No courses found</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No courses found">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const courses = [
+                { title: "Course 1", category: "technology", imageSrc: "https://raw.githubusercontent.com/Ansh-Yadav-maths-lover/Ansh-Books/main/neev-2.O.png", link:"https://anshbooks.weebly.com" },
+                { title: "Course 2", category: "business", imageSrc: "https://raw.githubusercontent.com/Ansh-Yadav-maths-lover/Ansh-Books/main/neev-2.O.png", link: "https://example.com/course2" },
+                { title: "Course 3", category: "technology", imageSrc: "https://raw.githubusercontent.com/Ansh-Yadav-maths-lover/Ansh-Books/main/neev-2.O.png", link: "https://example.com/course3" },
+                // Add more courses with their respective categories, image paths, and links
+            ];
+
+            const courseList = document.querySelector(".course-list");
+            const noCoursesFound = document.querySelector(".no-courses-found");
+            const categoryFilter = document.getElementById("category");
+
+            // Function to filter courses based on the selected category
+            function filterCourses() {
+                const selectedCategory = categoryFilter.value;
+
+                // Clear existing courses
+                courseList.innerHTML = '';
+                noCoursesFound.style.display = 'none';
+
+                // Filter and display courses
+                const filteredCourses = courses.filter(course => selectedCategory === 'all' || course.category === selectedCategory);
+
+                if (filteredCourses.length === 0) {
+                    noCoursesFound.style.display = 'block';
+                } else {
+                    filteredCourses.forEach(course => {
+                        const courseCard = document.createElement("div");
+                        courseCard.classList.add("course-card");
+
+                        const image = document.createElement("img");
+                        image.src = course.imageSrc;
+                        image.alt = course.title;
+
+                        const title = document.createElement("h2");
+                        title.textContent = course.title;
+
+                        // Add click event listener to each course card
+                        courseCard.addEventListener('click', () => {
+                            // Redirect to the specified link when a course card is clicked
+                            window.location.href = course.link;
+                        });
+
+                        courseCard.appendChild(image);
+                        courseCard.appendChild(title);
+                        courseList.appendChild(courseCard);
+                    });
+                }
+            }
+
+            // Function to handle the click animation
+            function handleAnimation(event) {
+                const clickAnimation = document.createElement("div");
+                clickAnimation.classList.add("click-animation");
+                clickAnimation.style.left = `${event.clientX}px`;
+                clickAnimation.style.top = `${event.clientY}px`;
+                document.body.appendChild(clickAnimation);
+
+                // Remove the animation element after the animation completes
+                clickAnimation.addEventListener("animationend", () => {
+                    clickAnimation.remove();
+                });
+            }
+
+            // Populate the course list initially
+            filterCourses();
+
+            // Add event listener for category filter changes
+            categoryFilter.addEventListener('change', filterCourses);
+
+            // Add event listener for click animation
+            document.addEventListener('click', handleAnimation);
+        });
+    </script>
+</body>
+</html>
